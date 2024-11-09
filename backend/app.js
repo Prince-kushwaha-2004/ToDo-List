@@ -53,7 +53,7 @@ const sessionOption={
         httpOnly:true,
         secure: true,
         sameSite: 'none',
-        domain:'.onrender.com'
+       
     }
 }
 app.use(session(sessionOption));
