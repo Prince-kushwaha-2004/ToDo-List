@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: .9rem;
+}
+.todo{
+    width: 100vw;
+    background: url('../assets/bg.jpg');
+    background-size: cover;
+}
+.todo main{
+    display: flex;
+    font-family: roboto;
+}
+nav{
+    box-shadow: rgba(44, 44, 46, 0.15) 1.95px 1.95px 2.6px;
+    width: 20rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    left: 0;
+    transition: all .3s;
+    background-color:#5c5c5c1c ;
+    color: black;
+
+}
+nav .logo{
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+nav .logo h1{
+    font-size: 3.2rem;
+    color: #2994B2;
+    font-family: "Concert One", sans-serif;
+}
+nav .logo i{
+    font-size: 2.2rem;
+    color: #f5f5f5;
+}
+nav .logo i:hover{
+    color:#ffb300da;
+}
+nav .logo h1 span{
+    color: #ffb300da;
+}
+nav .nav-links{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+
+}
+nav .nav-links a{
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #ffffffd3;
+    font-weight: 200;
+    width: 90%;
+    border-radius: 0 1rem 1rem 0;
+    padding: .5rem 2rem;
+    margin: 0;
+}
+nav .nav-links a:hover
+{
+   background-color: #2994B2;
+}
+/* nav .nav-links a:focus{
+    background-color:rgba(255, 187, 123, 0.562);
+}  */
+
+.content{
+    flex: 1;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+
+}
+.content .nav2{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: #e4e4e41c;
+    width: 100%;
+    height: 4rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+.navshow{
+    font-size: 2.2rem;
+    margin-left: 2rem;
+    columns: rgb(230, 230, 230);
+}
+.navshow:hover{
+    color: #ffb300da;
+}
+.nav2 div{
+    display: flex;
+    align-items: center;
+}
+.nav2 div p{
+    color: rgb(255, 255, 255);
+    text-shadow: -1px 1px 50px rgb(0, 0, 0);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+.nav2 div i{
+    color: #2994B2;
+}
+.main-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.main-container .todo-container h1{
+    font-size: 3rem;
+    margin: 1rem;
+    color: white;
+}
+.input input{
+    font-size: 1.8rem;
+    width: 100%;
+    margin: 1rem;
+    border: none;
+    color: rgb(0, 0, 0);
+}
+.input {
+    padding-left: 1rem;
+    background-color: rgb(250, 250, 250);
+    border-radius: 2rem;
+    display: flex;
+}
+.input button{
+    font-size: 2rem;
+    border: none;
+    padding: .5rem 2rem;
+    background-color: #2994B2;
+    color: white;
+    border-radius: 2rem;
+
+}
+.input button:hover{
+    background-color: #ffb300da;
+}
+.input input:focus{
+    outline:none;
+}
+.todo-list{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50rem;
+}
+.task div{
+    display: flex;
+    align-items: center;
+}
+.task div input{
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    margin: .5rem;
+    color: white;
+}
+.task input:focus{
+    outline: none;
+}
+.task .done{
+    width: 2rem;
+    height: 2rem;
+}
+.task {
+    margin: .5rem;
+    padding: .3rem 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #65e9ee2d;
+    border-radius: 2rem;
+}
+.task:hover{
+    background-color: #d7fafc2d;
+}
+.icons{
+    display: flex;
+    font-size: 2rem;
+    gap: 1rem;
+}
+.fa-trash,.fa-xmark,.fa-pencil,.fa-floppy-disk{
+    color: rgb(255, 255, 255);
+    text-shadow: -1px 1px 50px rgba(255, 255, 255, 0.712);
+}
+.fa-trash:hover{
+    color: rgb(223, 11, 11);
+}
+.fa-pencil:hover{
+    color: rgb(28, 138, 14);
+}
+.fa-floppy-disk:hover{
+    color: #2162b8;
+}
+.fa-xmark:hover{
+    color:red
+}
+
+.done-true{
+    text-decoration: line-through;
+    color: grey;
+}
+@media(max-width:1080px){
+    nav{
+        position: absolute;
+        left: -20rem;
+        backdrop-filter: blur(2rem);
+       
+    }
+    .navshow{
+        display: block !important;
+    }
+    
+}
+@media(max-width:885px){
+    .input {
+        width: 80vw;
+    }
+    .task {
+       width: 80vw;
+       display: flex;
+       /* justify-content: space-between; */
+    
+    }
+    .task div{
+        width: 80%;
+    }
+    .todo-list{
+        width: 100%;
+    }
+    .todo-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .task .done{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+@media(max-width:480px){
+   .todo-list{
+    margin:0;
+    margin: 2rem;
+   }
+   .task div input{
+    width: 49vw;
+}
+.input input{
+    font-size: 1.5rem;
+    margin: .5rem;
+
+}
+.input button{
+    font-size :1.5rem;
+}
+.task div input{
+    font-size: 1.2rem;
+}
+.task i{
+    font-size: 1.2rem;
+}
+
+}

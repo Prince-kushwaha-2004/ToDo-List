@@ -1,0 +1,33 @@
+
+<div class="left">
+    <nav>
+        <div class="logo">
+            <span>TO</span>do
+        </div>
+        <a ui-sref="signup" ui-sref-active="active"></a>
+
+    </nav>
+    <div class="login-form"> 
+        <p>Welcome Back!</p>
+        <h1>Login Your Account</h1>
+        <form class="form">
+            <input type="text" ng-model="data.username" placeholder=" Username" class="username" required>
+            <input type="password" ng-model="data.password" placeholder=" Password" class="password" required>
+            <button ng-click=data.login()>Login</button>
+            <p class="errmessage">{{data.errmessage}}</p>
+            
+        </form>
+      <p>Don't have account?</p>
+      <a ui-sref="signup" ui-sref-active="active">Signup</a>
+    </div>
+
+</div>
+<div class="right">
+    <div class="content">
+
+    </div>
+
+</div>
+
+
+

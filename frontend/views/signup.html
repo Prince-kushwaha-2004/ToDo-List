@@ -1,0 +1,38 @@
+<div class="left">
+    <nav>
+        <div class="logo">
+            <span>TO</span>do
+        </div>
+       
+
+    </nav>
+    <div class="login-form"> 
+        
+        <p>Welcome Back!</p>
+        <h1>Create Your Account</h1>
+        <form  class="form" name="signupform">
+            <input type="text" name="username" ng-model="data.newUsername" pattern="^[A-Za-z][A-Za-z0-9_]{1,29}$" placeholder=" Username" class="username" required> 
+            <input type="text" name="name" ng-model="data.newName" pattern="[A-Za-z]{1}[A-Z a-z]{1,15}" placeholder=" Name" class="name" required>
+            <input type="password" name="password1" ng-model="data.newPass1" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+-=]).{8,}$" placeholder=" Password" class="password1" required>
+            <input type="password" name="password2"  ng-model="data.newPass2" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+-=]).{8,}$" placeholder=" Confirm Password" class="password2" required>
+            <button ng-click="data.signup()" >Sign Up</button>
+            <p class="errmessage">{{data.signuperr}}</p>
+            <p class="succmessage">{{data.signupsuccess}}</p>
+
+            <p class="errmessage" ng-show="signupform.username.$touched && signupform.username.$invalid">Enter valid username ,(Username should contain alphabets and numbers,it should not contain spaces and special characters except underscores)</p>
+            <p class="errmessage" ng-show="signupform.name.$touched && signupform.name.$invalid">Enter valid name</p>
+            <p class="errmessage" ng-show="signupform.password1.$touched && signupform.password1.$invalid">Enter valid password,(password must contain atleat a special character,a uppercase letter, a lowercase letter,a number and minimum should be of 8 character)</p>
+            <p class="errmessage" ng-show="signupform.password2.$touched && signupform.password2.$invalid">Confirm password is not valid,(password must contain atleat a special character,a uppercase letter, a lowercase letter,a number and minimum should be of 8 character)</p>
+       
+          <div class="calc" style="display: none;">{{data.formvalid=signupform.username.$valid&&signupform.name.$valid&&signupform.password1.$valid&&signupform.password2.$valid}} </div> 
+        </form>
+        
+        <a ui-sref="login" ui-sref-active="active">Signin</a>
+    </div>
+
+</div>
+<div class="right">
+    <div class="content">
+        
+    </div>
+</div>
