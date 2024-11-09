@@ -35,10 +35,7 @@ myApp.service("api_request",["$http","$state",function($http,$state){
         var req = {
             method: 'GET',
             url:`${baseURL}/${path}`,
-            headers:{
-                withCredentials: true,
-            },    
-         
+            withCredentials: true, 
            }
            $http(req).then(function(responce){
             cb(responce.data);
