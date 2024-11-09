@@ -12,6 +12,15 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const MongoStore=require('connect-mongo');
 
+app.use((req,res,next)=>{
+    res.cookie('myCookie', 'value', {
+        httpOnly: true,       
+        secure: true,       
+        sameSite: 'None',        
+        domain: 'onrender.com', 
+      });
+      next()
+})
 const cors = require('cors');
 // app.use(cors());
 // app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
