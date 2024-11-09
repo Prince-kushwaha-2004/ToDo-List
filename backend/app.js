@@ -50,6 +50,7 @@ const sessionOption={
         maxAge:1000*60*60*24*7,
         httpOnly:true,
         sameSite: 'None',  
+        secure: true
     }
 }
 app.use(session(sessionOption));
