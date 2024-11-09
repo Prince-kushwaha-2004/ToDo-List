@@ -14,7 +14,7 @@ const MongoStore=require('connect-mongo');
 
 const cors = require('cors');
 // app.use(cors());
-app.use(cors({credentials: true, origin: ['http://10.21.97.26:8080']}))
+app.use(cors({credentials: true, origin: ['https://todo-list-1-u5l2.onrender.com']}))
 const userRouter=require("./routes/user")
 const todoRouter=require("./routes/todo")
 
