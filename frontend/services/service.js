@@ -7,6 +7,7 @@ myApp.service("api_request",["$http","$state",function($http,$state){
             method: method,
             url: `${baseURL}/${path}`,
             withCredentials:true,
+            
             data:data
         }
         $http(req).then(function (response) {
@@ -33,8 +34,11 @@ myApp.service("api_request",["$http","$state",function($http,$state){
     this.authenticate=function(path,cb){
         var req = {
             method: 'GET',
-            url:`${baseURL}/${path}`,    
-            withCredentials: true,
+            url:`${baseURL}/${path}`,
+            headers:{
+                withCredentials: true,
+            },    
+         
            }
            $http(req).then(function(responce){
             cb(responce.data);
