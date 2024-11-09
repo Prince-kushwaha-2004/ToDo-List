@@ -12,20 +12,11 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const MongoStore=require('connect-mongo');
 
-app.use((req,res,next)=>{
-    res.cookie('myCookie', 'value', {
-        httpOnly: true,       
-        secure: true,       
-        sameSite: 'None',        
-        domain: 'onrender.com', 
-      });
-      next()
-})
+
 const cors = require('cors');
 // app.use(cors());
 // app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
 app.use(cors({credentials: true, origin: true}));
-
 const userRouter=require("./routes/user")
 const todoRouter=require("./routes/todo")
 
@@ -60,8 +51,8 @@ const sessionOption={
         expires:Date.now()+1000*60*60*24*7,
         maxAge:1000*60*60*24*7,
         httpOnly:true,
-         secure: true,
-         sameSite: 'none'
+        secure: true,
+        sameSite: 'none'
     }
 }
 app.use(session(sessionOption));
