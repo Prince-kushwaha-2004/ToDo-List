@@ -1,54 +1,62 @@
 <link rel="stylesheet" href="/css/home.css">
 
-   <div class="todo" >
-        <main>
-            <nav>
-                <div class="up">
-                    <div class="logo">
-                        <h1><span>TO</span>do</h1>
-                        <i class="fa-solid fa-bars" onclick="resnev()"></i>
-                    </div>
-                    <div class="nav-links">
-                        <a ui-sref="todo" ng-click=" todo.gettodo()"><i class="fa-solid fa-rectangle-list"></i> ToDo</a>
-                        <a ui-sref="home" ng-click="todo.logout()" ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-                    </div>
+<div class="todo">
+    <main>
+        <nav>
+            <div class="up">
+                <div class="logo">
+                    <h1><span>TO</span>do</h1>
+                    <i class="fa-solid fa-bars" onclick="resnev()"></i>
                 </div>
-            </nav>
-            <div class="content" >
-                <div class="nav2">
-                    <div >
-                        <p class="userdetail"> <i class="fa-solid fa-user"></i> {{todo.username}}</p>
-                    </div>
-                    <i class="fa-solid fa-bars navshow"  onclick="resnev()" style="display: none;"></i>
+                <div class="nav-links">
+                    <a ui-sref="todo" ng-click=" todo.gettodo()"><i class="fa-solid fa-rectangle-list"></i> ToDo</a>
+                    <a ui-sref="home" ng-click="todo.logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                 </div>
-                <div class="main-container" >
-                    <div class="todo-container">
-                        <h1>To-Do List</h1>
-                        <div class="input">
-                            <input type="text" ng-model="todo.newText" placeholder="Add Your Task">
-                            <button ng-click="todo.addTodo()">Add</button>
-                        </div>    
-                       <div class="todo-list">
+            </div>
+        </nav>
+        <div class="content">
+            <div class="nav2">
+                <div>
+                    <p class="userdetail"> <i class="fa-solid fa-user"></i> {{todo.username}}</p>
+                </div>
+                <i class="fa-solid fa-bars navshow" onclick="resnev()" style="display: none;"></i>
+            </div>
+            <div class="main-container">
+                <div class="todo-container">
+                    <h1>To-Do List</h1>
+                    <div class="input">
+                        <input type="text" ng-model="todo.newText" placeholder="Add Your Task">
+                        <button ng-click="todo.addTodo()">Add</button>
+                    </div>
+                    <div class="todo-list">
+                    <div class="todo-list-container">
                         <div class="task" ng-repeat="x in todo.todoData">
                             <div>
-                                <input class="done" type="checkbox" ng-click="todo.updateTodoStatus(x._id,x.isDone)" ng-checked=x.isDone ng-model="x.isDone">
-                                <input type="text" disabled="true" id="{{x._id}}" class="task-text done-{{x.isDone}}" value="{{x.task}}">
+                                <input class="done" type="checkbox" ng-click="todo.updateTodoStatus(x._id,x.isDone)"
+                                    ng-checked=x.isDone ng-model="x.isDone">
+                                <input type="text" disabled="true" id="{{x._id}}" class="task-text done-{{x.isDone}}"
+                                    value="{{x.task}}">
                             </div>
-                           <div class="icons">
-                            
-                            <div class="cancel" ng-click="todo.canceledt(x._id)"><i class="fa-solid cancel-{{x._id}}"></i></div>
-                            <label for="{{x._id}}" ng-show="!x.isDone"><div class="edit" ng-click="todo.edit_Text(x._id,x.isDone)"><i class="fa-solid fa-pencil edit-{{x._id}}"></i></div></label>
-                            <div class="delete" ng-click="todo.deleteTodo(x._id)"><i class="fa-solid fa-trash  delete-{{x._id}}"></i></div>
-                           </div>   
-                        </div>    
-                       </div> 
+                            <div class="icons">
+
+                                <div class="cancel" ng-click="todo.canceledt(x._id)"><i
+                                        class="fa-solid cancel-{{x._id}}"></i></div>
+                                <label for="{{x._id}}" ng-show="!x.isDone">
+                                    <div class="edit" ng-click="todo.edit_Text(x._id,x.isDone)"><i
+                                            class="fa-solid fa-pencil edit-{{x._id}}"></i></div>
+                                </label>
+                                <div class="delete" ng-click="todo.deleteTodo(x._id)"><i
+                                        class="fa-solid fa-trash  delete-{{x._id}}"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-            </div>   
+                    </div>
+                </div>
             </div>
-        </main>
-    
-        
+        </div>
+    </main>
 
-    </div>
 
-    
+
+</div>

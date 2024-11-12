@@ -1,7 +1,7 @@
 
 const myApp = angular.module('myApp', ['ui.router']);
 const baseURL = "https://todo-list-jfx5.onrender.com"
-// const baseURL = "http://localhost:8000"
+// const baseURL = "http://10.21.165.232:8000"
 
 myApp.controller('mainctrl', [function () {
   main = this;

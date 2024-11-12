@@ -15,8 +15,8 @@ const MongoStore=require('connect-mongo');
 
 const cors = require('cors');
 // app.use(cors());
-// app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
-app.use(cors({credentials: true, origin: true}));
+app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
+// app.use(cors({credentials: true, origin: true}));
 const userRouter=require("./routes/user")
 const todoRouter=require("./routes/todo")
 
@@ -50,10 +50,9 @@ const sessionOption={
     cookie:{
         expires:Date.now()+1000*60*60*24*7,
         maxAge:1000*60*60*24*7,
-        httpOnly: true,
-        sameSite:"None",
-        secure:true
-       
+        domain: '.onrender.com', 
+        secure: true,             
+        sameSite: 'None'    
     }
 }
 app.use(session(sessionOption));
@@ -78,7 +77,6 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-
 app.get("/",(req,res)=>{
     res.send("welcome to todo website")
 })
@@ -97,3 +95,4 @@ app.get("/authenticate",(req,res)=>{
 app.listen("8000",()=>{
     console.log("server listining from port 8000")
 })
+

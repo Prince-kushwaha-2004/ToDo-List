@@ -223,6 +223,15 @@ nav .nav-links a:hover
     text-decoration: line-through;
     color: grey;
 }
+.todo-list-container{
+    padding: 2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 68vh;
+}
+.todo-list-container::-webkit-scrollbar {
+    display: none;
+  }
 @media(max-width:1080px){
     nav{
         position: absolute;
@@ -283,6 +292,9 @@ nav .nav-links a:hover
 }
 .task i{
     font-size: 1.2rem;
+}
+.todo-list-container{
+    padding: 0rem;
 }
 
 }
