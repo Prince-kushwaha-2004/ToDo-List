@@ -1,29 +1,19 @@
-const passport=require('passport')
+const jwt=require('jsonwebtoken')
+const User=require('./models/user')
 const Todo=require('./models/todo')
-module.exports.authenticateforlogin=(req, res, next) => {
-    console.log(req.body)
-    passport.authenticate('local', (err, user, info) => {
-        if (err) {
-            return next(err);
-        }
-        if (!user) {
-            return res.status(401).send({ message: info.message || 'Invalid credentials' });
-        }
-        req.logIn(user, (err) => {
-            if (err) {
-                return next(err);
-            }
-            req.user=user;
-            next()
-        });
-    })(req,res,next)
-}
-
-module.exports.isLogin=(req,res,next)=>{
-    if(!req.isAuthenticated()){
-        return res.status(401).send({"message":"user not login"})
+module.exports.isLogin=async(req,res,next)=>{
+    const token=req.cookies.token
+    if(!token){
+        return res.status(400).json({"error":"Please Login"})
     }
-    next();
+    data=jwt.verify(token,process.env.TOKEN_SECRET)
+    if(!data){
+        return res.status(400).json({"error":"Token expired"})
+    }
+   
+    const user=await User.findOne({_id:data.id})
+    req.user=user
+    next()
 }
 
 module.exports.isowner=async(req,res,next)=>{

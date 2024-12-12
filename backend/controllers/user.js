@@ -1,6 +1,6 @@
-const user = require("../models/user");
+const bcrypt=require('bcryptjs')
 const User=require("../models/user")
-
+const generateToken=require('../utils/generateToken')
 module.exports.signup=async(req,res)=>{
     let {username,name,password,confirmPassword}=req.body;
     if(username==undefined||name==undefined||password==undefined||confirmPassword==undefined){
@@ -10,30 +10,39 @@ module.exports.signup=async(req,res)=>{
     if(password!==confirmPassword){
        return res.status(401).send({"message":"Password does not match"})
     }
-    let newUser=new User({username,name});
-    User.register(newUser,password,(err,user)=>{
-        if(err){
-            res.status(500).send(err)
-        }
-        else{
-            res.status(200).send("user created successfully")
-        }
-    })
+    const hashPassword = await bcrypt.hash(password, 10);
+    newuser={
+        "username":username,
+        "name":name,
+        "password":hashPassword
+    }
+    user=new User(newuser)
+    await user.save()
+    res.status(200).json({"message":"user created successfull"})
 }
-module.exports.login=(req,res)=>{
-    const user=req.user
-    res.status(200).send({message:"user login",
-        User:{
-            name:user.name,
-            username:user.username
-        }
-    })
+module.exports.login=async(req,res)=>{
+    data=req.body
+    console.log(req.body)
+    if(!data||!data.username||!data.password){
+        return res.status(400).json({"error":"unsufficient data"})
+    }
+    user=await User.findOne({"username":data.username})
+    if(!user){
+        return res.status(400).json({"error":"no user with this credentials"})
+    }
+    const comparePassword = await bcrypt.compare(data.password, user.password);
+    if(!comparePassword){
+        return res.status(400).json({"error":"wrong password"})
+    }
+    generateToken(user._id,res)
+    res.status(200).json({"message":"user login successfull"})
 }
 module.exports.logout=(req,res,next)=>{
-    req.logout((err)=>{
-        if(err){
-            next(err);
-        }
-        res.status(200).send({"message":"user logout successfull"})
-    })
+    res.cookie("token", "", {
+        maxAge: 15 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        sameSite: "NONE", // to prevent csrf attack .!
+      });
+    res.status(200).send({"message":"user logout successfull"})
+    
 }
