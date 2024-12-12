@@ -12,7 +12,8 @@ const cors = require('cors');
 
 app.use(cookieParser())
 
-app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
+app.use(cors)
+// app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
 // app.use(cors({credentials: true, origin: 'http://localhost:5501'}));
 const userRouter=require("./routes/user")
 const todoRouter=require("./routes/todo")
