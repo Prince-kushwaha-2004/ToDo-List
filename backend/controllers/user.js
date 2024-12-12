@@ -38,7 +38,8 @@ module.exports.login=async(req,res)=>{
     res.status(200).json({"message":"user login successfull"})
 }
 module.exports.logout=(req,res,next)=>{
-    res.cookie("token", "", { maxAge: 0 });
+    res.clearCookie('token');
+    // res.cookie("token", "", { maxAge: 0 });
     res.status(200).send({"message":"user logout successfull"})
     
 }
