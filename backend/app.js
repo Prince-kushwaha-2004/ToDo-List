@@ -8,20 +8,20 @@ const mongoose=require('mongoose')
 const methodOverride=require("method-override");
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
-// const cors = require('cors');
-const allowCrossDomain = (req, res, next) => {
-    res.header(`Access-Control-Allow-Origin`, 'https://todo-list-1-u5l2.onrender.com');
-    res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-    res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-    res.header(`Access-Control-Allow-Credentials`, true);
+const cors = require('cors');
+// const allowCrossDomain = (req, res, next) => {
+//     res.header(`Access-Control-Allow-Origin`, 'https://todo-list-1-u5l2.onrender.com');
+//     res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+//     res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+//     res.header(`Access-Control-Allow-Credentials`, true);
 
-    next();
-  };
-  app.use(allowCrossDomain)
+//     next();
+//   };
+//   app.use(allowCrossDomain)
 app.use(cookieParser())
 
 // app.use(cors)
-// app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
+app.use(cors({credentials: true, origin: 'https://todo-list-1-u5l2.onrender.com'}))
 // app.use(cors({credentials: true, origin: 'http://localhost:5501'}));
 const userRouter=require("./routes/user")
 const todoRouter=require("./routes/todo")
