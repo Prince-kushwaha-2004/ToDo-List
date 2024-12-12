@@ -13,7 +13,7 @@ const allowCrossDomain = (req, res, next) => {
     res.header(`Access-Control-Allow-Origin`, 'https://todo-list-1-u5l2.onrender.com');
     res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
     res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-    res.header(`Access-Control-Allow-Headers`, 'true');
+    res.header(`Access-Control-Allow-Credentials`, true);
 
     next();
   };
